@@ -26,15 +26,15 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	List<User> findAllUsers(@Param("role") Integer userRole);
 
 	/*fetching subdomain*/
-//	@Query( "select domain_name from Company c where c.id =:comp_id" )
-//	String getsubdomains(Long comp_id);
+	@Query( "select domain_name from Company c where c.id =:comp_id" )
+	String getsubdomains(Long comp_id);
 
 ////	@Query( "select company_id from User c where c.email =:email_id" )
 ////	String getsubdomain(String email_id);
 	
 	/*select subdomain name for currently logged in user-with email id*/
-//	@Query("select c.domain_name FROM Company c, User u where u.company_id=c.id and u.email=:email")
-//	String getsubdomain(@Param("email") String email);
+	@Query("select c.domain_name FROM Company c, User u where u.company_id=c.id and u.email=:email")
+	String getsubdomain(@Param("email") String email);
 
 	@Query( "select id from User u  where u.username =:res" )
 	Long findByUsername(@Param("res") Optional<String> res);
